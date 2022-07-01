@@ -1,0 +1,223 @@
+/*伸缩盒子模型*/
+@mixin box() {
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+/*从左至右*/
+
+@mixin box_lr() {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+
+/*从右至左*/
+
+@mixin box_rl() {
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+
+/*从上至下*/
+
+@mixin box_tb() {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+
+/*从下至上*/
+
+@mixin box_bt() {
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+
+/*主轴居中*/
+
+@mixin box_pack_center() {
+    -webkit-box-pack: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+
+/*主轴居左*/
+
+@mixin box_pack_start() {
+    -webkit-box-pack: start;
+    -moz-justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+}
+
+
+/*主轴居右*/
+
+@mixin box_pack_end() {
+    -webkit-box-pack: end;
+    -moz-justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+
+/*主轴左右不留白*/
+
+@mixin box_pack_between() {
+    -webkit-box-pack: justify;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+
+/*主轴左右留白*/
+
+@mixin box_pack_around() {
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+
+/*交叉轴居中对齐*/
+
+@mixin box_align_center() {
+    -webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+/*交叉轴居左对齐*/
+
+@mixin box_align_start() {
+    -webkit-box-align: start;
+    -moz-align-items: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+}
+
+
+/*交叉轴居右对齐*/
+
+@mixin box_align_end() {
+    -webkit-box-align: end;
+    -moz-align-items: end;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+
+
+/**单个指定的子元素自定义对齐方式，可以不同于其他子元素对齐方式**/
+
+
+/**指定子元素居中对齐**/
+
+@mixin self_align_center() {
+    align-self: center;
+    -webkit-align-self: center;
+    margin: 0 auto;
+}
+
+
+/**指定子元素顶部对齐**/
+
+@mixin self_align_start() {
+    align-self: flex-start;
+    -webkit-align-self: flex-start;
+}
+
+
+/**指定子元素底部对齐**/
+
+@mixin self_align_end() {
+    align-self: flex-end;
+    -webkit-align-self: flex-end;
+}
+
+
+/**指定子元素拉伸**/
+
+@mixin self_align_stretch() {
+    align-self: stretch;
+    -webkit-align-self: stretch;
+}
+
+
+/**子元素换行**/
+
+@mixin box_wrap() {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+
+/**子元素不换行**/
+
+@mixin box_nowrap() {
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+
+/*允许子元素伸展（1倍）*/
+
+@mixin flex($span: 1) {
+    -moz-flex-grow: $span;
+    -webkit-flex-grow: $span;
+    flex-grow: $span;/*如果值是2 那么当前元素就是其他元素宽的2倍了*/
+}
+
+/* flex:1 是 flex-grow、flex-shrink、flex-basis的缩写。故其取值可以考虑以下情况：
+ flex-grow:0表示不会拉伸 flex-shrink:1表示 可以缩小
+ flex 的默认值是以上三个属性值的组合。假设以上三个属性同样取默认值，则 flex 的默认值是 0 1 auto*/
+
+/*允许子元素收缩(1倍)*/
+
+@mixin shrink() {
+    -moz-flex-shrink: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+}
+
+
+/**水平居中*/
+
+@mixin box_center_center() {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: -moz-box;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    text-align: center;
+}

@@ -1,13 +1,32 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/index/home",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "MBTI职业心理测试"
+			}
+		},
+		{
+			"path": "pages/topic/topic",
+			"style": {
+				"navigationBarTitleText": "MBTI职业心理测试"
+			}
+		},
+		{
+			"path": "pages/topic/index",
+			"style": {
+				"navigationBarTitleText": "MBTI职业心理测试"
+			}
+		},
+		{
+			"path": "pages/result/result",
+			"style": {
+				"navigationBarTitleText": "答题结束"
 			}
 		}
 	],
 	"globalStyle": {
+		"navigationStyle":"custom",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
